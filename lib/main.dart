@@ -1,12 +1,12 @@
-import 'package:doc_on_call/screens/details/details_screen.dart';
+import 'package:doc_on_call/screens/login_register_screen/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import './screens/home/home_screen.dart';
-import './screens/login_register_screen/login_screen.dart';
-import './screens/login_register_screen/register_screen.dart';
-import 'models/screens/body.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: SplashScreen(),
       // home: Body(),
     );
   }

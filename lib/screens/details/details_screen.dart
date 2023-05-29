@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import './components/body.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({Key key, this.product}) : super(key: key);
+  const DetailsScreen({Key? key, required this.product}) : super(key: key);
   final Product product;
 
   @override

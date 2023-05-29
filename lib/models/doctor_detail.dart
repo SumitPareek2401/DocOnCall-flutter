@@ -10,13 +10,13 @@ class Doctor {
   final String book;
 
   Doctor({
-    this.id,
-    this.docname,
-    this.profession,
-    this.fees,
-    this.latitude,
-    this.longitude,
-    this.book,
+    required this.id,
+    required this.docname,
+    required this.profession,
+    required this.fees,
+    required this.latitude,
+    required this.longitude,
+    required this.book,
   });
 }
 
@@ -67,3 +67,56 @@ List<Doctor> doctors = [
     longitude: 75.854047,
   ),
 ];
+
+// [
+//   {
+//     "userId": 1,
+//     "id": 1,
+//     "title": "Dr. Gupta",
+//     "profession": "MBBS",
+//     "fees": 500,
+//     "book": "Book your appointment",
+//     "latitude": 26.766156,
+//     "longitude": 75.854047
+//   },
+//   {
+//     "userId": 1,
+//     "id": 2,
+//     "title": "Dr. Gupta",
+//     "profession": "MBBS",
+//     "fees": 500,
+//     "book": "Book your appointment",
+//     "latitude": 26.766156,
+//     "longitude": 75.854047
+//   },
+//   {
+//     "userId": 1,
+//     "id": 0,
+//     "title": "Dr. Gupta",
+//     "profession": "MBBS",
+//     "fees": 500,
+//     "book": "Book your appointment",
+//     "latitude": 26.766156,
+//     "longitude": 75.854047
+//   },
+//   {
+//     "userId": 2,
+//     "id": 4,
+//     "docname": "Dr. Chauhan",
+//     "profession": "Dentist",
+//     "fees": 2900,
+//     "book": "Book your appointment",
+//     "latitude": 26.766156,
+//     "longitude": 75.854047
+//   },
+//   {
+//     "userId": 3,
+//     "id": 5,
+//     "docname": "Dr. Sharma",
+//     "profession": "Cardiologist",
+//     "fees": 1000,
+//     "book": "Book your appointment",
+//     "latitude": 26.766156,
+//     "longitude": 75.854047
+//   }
+// ]

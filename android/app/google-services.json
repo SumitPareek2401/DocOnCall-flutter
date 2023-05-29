@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "76580254829",
+    "project_id": "doconcallfb",
+    "storage_bucket": "doconcallfb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76580254829:android:1458d95ebcd031e24f3b64",
+        "android_client_info": {
+          "package_name": "com.example.doc_on_call"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB14yl3jYj-GSw1TLjc1cq-3baRdacj_lc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,7 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DoctorLocationScreen extends StatefulWidget {
-const DoctorLocationScreen({Key key, this.doctor}) : super(key: key);
+const DoctorLocationScreen({Key? key, required this.doctor}) : super(key: key);
 final Doctor doctor;
 
 

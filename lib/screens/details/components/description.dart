@@ -4,8 +4,8 @@ import '/models/product.dart';
 
 class Description extends StatelessWidget {
   const Description({
-    Key key,
-    @required this.product,
+    Key? key,
+    required this.product,
   }) : super(key: key);
 
   final Product product;

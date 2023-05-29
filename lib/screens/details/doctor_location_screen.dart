@@ -3,14 +3,14 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CurrentLocationScreen extends StatefulWidget {
-  const CurrentLocationScreen({Key key}) : super(key: key);
+  const CurrentLocationScreen({Key? key}) : super(key: key);
 
   @override
   _CurrentLocationScreenState createState() => _CurrentLocationScreenState();
 }
 
 class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
-  GoogleMapController googleMapController;
+  late GoogleMapController googleMapController;
   static const CameraPosition initialCameraPosition = CameraPosition(
     target: LatLng(37.42796122580664, -122.085749655962),
     zoom: 14,

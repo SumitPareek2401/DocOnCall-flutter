@@ -7,10 +7,11 @@ import '/constants.dart';
 import './product_title_with_image.dart';
 import '/models/product.dart';
 import './description.dart';
+import 'package:doc_on_call/models/doctor_detail_screen.dart';
 
 class Body extends StatelessWidget {
   final Product product;
-  const Body({Key key, this.product}) : super(key: key);
+  const Body({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class Body extends StatelessWidget {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return const CurrentLocationScreen();
+                                return CurrentLocationScreen();
                               },
                             ),
                           );
@@ -66,7 +67,7 @@ class Body extends StatelessWidget {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return Bodydoc();
+                                return DoctorDetailScreen();
                               },
                             ),
                           );
