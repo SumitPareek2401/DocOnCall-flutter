@@ -21,6 +21,7 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
+        backgroundColor: Colors.purpleAccent,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -58,7 +59,7 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
                       loading = false;
                     });
                     // Utils().toastMessage(
-                      // e.toString(),
+                    // e.toString(),
                     // );
                   },
                   codeSent: (String verificationId, int? token) {

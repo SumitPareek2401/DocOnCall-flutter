@@ -1,3 +1,4 @@
+import 'package:doc_on_call/utils/utils.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -13,14 +14,16 @@ class _AddDiseaseScreenState extends State<AddDiseaseScreen> {
   final ageController = TextEditingController();
   final genderController = TextEditingController();
   final descController = TextEditingController();
+  final phoneController = TextEditingController();
   final databaseRef = FirebaseDatabase.instance.ref('Text');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // elevation: 0,
         title: const Text(
-          'Add Details of Disease',
+          'Fill the form',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -40,7 +43,18 @@ class _AddDiseaseScreenState extends State<AddDiseaseScreen> {
                   child: Column(
                     children: [
                       const SizedBox(
-                        height: 100,
+                        height: 50,
+                      ),
+                      const Text(
+                        'Medical Form:',
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
                       ),
                       TextFormField(
                         controller: nameController,
@@ -67,6 +81,18 @@ class _AddDiseaseScreenState extends State<AddDiseaseScreen> {
                         controller: genderController,
                         decoration: const InputDecoration(
                           hintText: 'Gender',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      TextFormField(
+                        controller: phoneController,
+                        keyboardType: TextInputType.phone,
+                        decoration: const InputDecoration(
+                          // prefixIcon: Icon(Icons.account_box),
+                          hintText: 'Phone Number',
                           border: OutlineInputBorder(),
                         ),
                       ),
@@ -101,13 +127,16 @@ class _AddDiseaseScreenState extends State<AddDiseaseScreen> {
                         .child(id)
                         .set({
                       'name': nameController.text.toString(),
-                      'uid': DateTime.now().microsecondsSinceEpoch.toString(),
+                      'uid': id,
                       'age': ageController.text.toString(),
                       'gender': genderController.text.toString(),
                       'description': descController.text.toString(),
+                      'phone': phoneController.text.toString(),
+                    }).then((value) {
+                      Utils().toastMessage('Form Submitted');
+                    }).onError((error, stackTrace) {
+                      Utils().toastMessage(error.toString());
                     });
-                    // .then((value) {})
-                    // .onError((error, stackTrace) {});
                   },
                   child: const Text(
                     'Submit',

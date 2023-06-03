@@ -5,6 +5,7 @@ import 'package:doc_on_call/screens/login_register_screen/login_with_phone_no.da
 import 'package:doc_on_call/screens/login_register_screen/register_screen.dart';
 import 'package:doc_on_call/screens/home/home_screen.dart';
 import 'package:doc_on_call/screens/login_register_screen/round_button.dart';
+import 'package:doc_on_call/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -39,9 +40,9 @@ class _MyLoginState extends State<MyLogin> {
         .signInWithEmailAndPassword(
             email: emailController.text, password: passwordController.text)
         .then((value) {
-      // Utils().toastMessage(
-      //   value.user!.email.toString(),
-      // );
+      Utils().toastMessage(
+        value.user!.email.toString(),
+      );
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -53,7 +54,7 @@ class _MyLoginState extends State<MyLogin> {
       });
     }).onError((error, stackTrace) {
       debugPrint(error.toString());
-      // Utils().toastMessage(error.toString());
+      Utils().toastMessage(error.toString());
       setState(() {
         loading = false;
       });
@@ -67,6 +68,7 @@ class _MyLoginState extends State<MyLogin> {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text('Login'),
+        backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(

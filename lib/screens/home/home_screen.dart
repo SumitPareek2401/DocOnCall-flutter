@@ -1,6 +1,7 @@
 // import 'dart:js';
 
 import 'package:doc_on_call/screens/details/disease_add/add_disease_screen.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '/constants.dart';
 import '/screens/AppDrawer.dart';
@@ -15,25 +16,25 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: Body(),
-      // drawer: AppDrawer(),
+      drawer: AppDrawer(),
     );
   }
 
   AppBar buildAppBar(BuildContext context) {
-    return AppBar(
+    return AppBar(      
       backgroundColor: Colors.white,
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset("assets/icons/back.svg"),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AppDrawer(),
-            ),
-          );
-        },
-      ),
+      // leading: IconButton(
+      //   icon: SvgPicture.asset("assets/icons/back.svg"),
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => AppDrawer(),
+      //       ),
+      //     );
+      //   },
+      // ),
       actions: <Widget>[
         IconButton(
           icon: const Icon(

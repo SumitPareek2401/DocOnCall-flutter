@@ -1,7 +1,8 @@
 import 'package:doc_on_call/screens/login_register_screen/login_screen.dart';
 // import 'package:fetch_api_demo/utils/utils.dart';
 import 'package:doc_on_call/screens/login_register_screen/round_button.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:doc_on_call/utils/utils.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -15,10 +16,12 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   bool loading = false;
   final _formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final databaseRef = FirebaseDatabase.instance.ref('SignUpDetails');
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -55,6 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('SignUp'),
+        backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -69,6 +73,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
               key: _formKey,
               child: Column(
                 children: [
+                  TextFormField(
+                    keyboardType: TextInputType.name,
+                    controller: nameController,
+                    decoration: const InputDecoration(
+                      hintText: 'Name',
+                      prefixIcon: Icon(Icons.man),
+                    ),
+                  ),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     //this is used for getting email&password
@@ -106,12 +118,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 25,
             ),
             RoundButton(
               title: 'SignUp',
               loading: loading,
               OnTap: () {
+                setState(() {
+                  loading = true;
+                });
+
+                String id = DateTime.now().millisecondsSinceEpoch.toString();
+                databaseRef.child(id).set({
+                  'name ': nameController.text.toString(),
+                  'gmail': emailController.text.toString(),
+                  'uid': id,
+                }).then((value) {
+                  Utils().toastMessage('Sign Up Successfully');
+                  setState(() {
+                    loading = false;
+                  });
+                }).onError((error, stackTrace) {
+                  Utils().toastMessage(error.toString());
+                  setState(() {
+                    loading = false;
+                  });
+                });
                 // to check whether the email and password are submitted or are in correct format or not
                 if (_formKey.currentState!.validate()) {
                   login();
@@ -129,7 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MyLogin(),
+                        builder: (context) => const MyLogin(),
                       ),
                     );
                   },

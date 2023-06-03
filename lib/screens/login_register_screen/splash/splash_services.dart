@@ -6,12 +6,12 @@ class SplashServices {
   void isLogin(BuildContext context) {
     Timer(
       const Duration(seconds: 2),
-      () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SplashScreenNext(),
-        ),
-      ),
+      (){}// => Navigator.push(
+        // context,
+        // MaterialPageRoute(
+          // builder: (context) => SplashScreenNext(),
+        // ),
+      // ),
     );
   }
 }
